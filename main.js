@@ -28,9 +28,6 @@ fetch(img)
    imain(dimage);
 });
 
-
-
-
 fetch(url)
  .then(function(response) {
    return response.json();
@@ -47,8 +44,7 @@ function umain() {
     let ranu = Math.floor(Math.random() * users.results.length); //Seelcts random number for user
     console.log(ranu);
     gender = users.results[ranu].gender;
-    let nameraw = users.results[ranu].name.first;
-    name = nameraw.charAt(0).toUpperCase() + nameraw.slice(1);
+    name = jsUcfirst(users.results[ranu].name.first);
     firstnameElement.innerText = "This is " + name +". " + name + " is a "+ gender + ".";//user name
 } 
 
@@ -60,6 +56,13 @@ function resetfunc(){
     imain();
     umain();
 }
+
+
+function jsUcfirst(string) //uppercase the first letter.
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
 
 
