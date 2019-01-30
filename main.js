@@ -11,7 +11,7 @@ const database = firebase.database();
 
 sbutton.addEventListener("click",updateDB);
 obutton.addEventListener("click",openDB);
-rbutton.addEventListener("click",resetfunc);
+rbutton.addEventListener("click",resetfunc);// resets the iamges
 
 let name;
 let gender;
@@ -44,13 +44,16 @@ fetch(url)
 
 
 function umain() {
-    gender = users.results[Math.floor(Math.random() * users.results.length)].gender;
-    name = users.results[Math.floor(Math.random() * users.results.length)].name.first;   
+    let ranu = Math.floor(Math.random() * users.results.length); //Seelcts random number for user
+    console.log(ranu);
+    gender = users.results[ranu].gender;
+    let nameraw = users.results[ranu].name.first;
+    name = nameraw.charAt(0).toUpperCase() + nameraw.slice(1);
     firstnameElement.innerText = "This is " + name +". " + name + " is a "+ gender + ".";//user name
 } 
 
 function imain(){
-    imageElement.src = dimage.message[Math.floor(Math.random() * dimage.message.length)];//image surce
+    imageElement.src = dimage.message[Math.floor(Math.random() * dimage.message.length)];//image source
 }
 
 function resetfunc(){
